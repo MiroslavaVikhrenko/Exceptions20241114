@@ -10,6 +10,7 @@ namespace Homework_task1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome!");
             DisplayMenu();
             Console.ReadKey();
         }
