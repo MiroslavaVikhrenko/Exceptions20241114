@@ -17,30 +17,31 @@ namespace Homework_task1
         static void DisplayMenu()
         {
             Console.Clear();
-            string choice = null;
+            int choice = 0;
             try
             {
                 Console.WriteLine("Please choose an option:");
-                Console.WriteLine("1. cat\n2. dog\n3. bird\n4. fish");
-                choice = Console.ReadLine();
+                Console.WriteLine("1\n2\n3\n4");
+                choice = Convert.ToInt32(Console.ReadLine());
             }
             catch (FormatException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadKey();
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.ReadKey();
             }
             finally
             {
-                if (choice is null)
-                {
-                    DisplayMenu();
-                }
-                else
-                {
-                    if (choice == "cat" || choice == "dog" || choice == "bird" || choice == "fish")
+                    if (choice == 1 || choice == 2 || choice == 3 || choice == 4)
                     {
                         Console.Clear();
                         Console.WriteLine($"You chose {choice}");
@@ -49,10 +50,9 @@ namespace Homework_task1
                     else
                     {
                         Console.WriteLine("Incorrected value entered, please try again.");
+                        Console.ReadLine();
                         DisplayMenu();
-                    }
-                    
-                }
+                    }                   
             }
         }
     }
